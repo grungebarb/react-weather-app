@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import SearchSection from "./SearchSection";
-import CityInfo from "./CityInfo";
 import "./WeatherApp.css";
 import icon from "./icon_01d.png";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 export default function WeatherApp(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -14,14 +14,22 @@ export default function WeatherApp(props) {
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      city: response.data.name
+      city: response.data.name,
+      description: response.data.weather[0].description,
+      date: new Date(response.data.dt * 1000)
     })
   }
   if (weatherData.ready) {
     return (
     <div className="WeatherApp weather-app">
       <SearchSection />
-      <CityInfo />
+      <div className="CityInfo city-info">
+        <h1>{weatherData.city}</h1>
+        <ul>
+          <li>Last update: <FormattedDate date={weatherData.date} /></li>
+          <li>{weatherData.description}</li>
+        </ul>
+      </div>
       <div className="row acurate-data-section">
         <div className="col-3">
           <img src={icon} alt="" className="current-icon" />
