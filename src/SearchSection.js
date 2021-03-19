@@ -11,8 +11,8 @@ export default function SearchSection() {
               type="search"
               placeholder="Enter a city, please"
               className="form-control"
-              autocomplete="off"
-              autofocus
+              autoComplete="off"
+              autoFocus
             />
           </div>
           <div className="col-2">
