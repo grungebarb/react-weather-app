@@ -2,6 +2,7 @@ import React from "react";
 import SearchSection from "./SearchSection";
 import CityInfo from "./CityInfo";
 import "./WeatherApp.css";
+import icon from "./icon_01d.png";
 
 export default function Weather() {
   return (
@@ -10,6 +11,7 @@ export default function Weather() {
       <CityInfo />
       <div className="row acurate-data-section">
         <div className="col-3">
+          <img src={icon} alt="" className="current-icon" />
         </div>
         <div className="col-4">
           <strong className="current-temperature">13ºC</strong>
