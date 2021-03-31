@@ -1,0 +1,22 @@
+.WeatherInfo .city-info {
+  margin-left: 20px;
+}
+.WeatherInfo h1 {
+  font-size: 40px;
+  margin: 10px 0 0;
+}
+.WeatherInfo ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.WeatherInfo li::first-letter {
+  text-transform: capitalize;
+}
+.WeatherInfo .acurate-data-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.WeatherInfo .current-icon {
+  max-width: 120px;
+}

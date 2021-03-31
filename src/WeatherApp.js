@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "./WeatherApp.css";
 import axios from "axios";
-
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherApp(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -25,7 +25,6 @@ export default function WeatherApp(props) {
   function handleSubmit(event) {
     event.preventDefault();
     search();
-
   }
   function search() {
     let apiKey = "b89a2bda363f782379e90e985a8aa5e3";
@@ -34,15 +33,14 @@ export default function WeatherApp(props) {
   }
   function handleCityChange(event)  {
     setCity(event.target.value);
-
   }
   if (weatherData.ready) {
     return (
-    <div className="WeatherApp weather-app">
-      <div className="SearchSection search-section">
+    <div className="WeatherApp">
+      <div className="search-section">
         <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-7">
+          <div className="row search-form">
+            <div className="col">
               <input
                 type="search"
                 placeholder="Enter a city, please"
@@ -52,35 +50,17 @@ export default function WeatherApp(props) {
                 onChange={handleCityChange}
               />
             </div>
-            <div className="col-2">
+            <div className="col">
               <button type="submit" className="btn search-btn px-4">
                 <FontAwesomeIcon icon={faSearch} />
-              </button>
-            </div>
-            <div className="col-3">
-              <button
-                type="button"
-                className="btn search-btn px-4"
-                title="Button not working yet"
-              >
-                <strong>Current</strong>
               </button>
             </div>
           </div>
         </form>
       </div>
       <WeatherInfo data={weatherData} />
-      
-      <div className="row">
-        <div className="col-8 units-conversion">
-          Do you want to see it on ºF?
-        </div>
-        <div className="col-4">
-          <button type="button" className="btn units-btn">
-            <strong>YES!</strong>
-          </button>
-        </div>
-      </div>
+      <WeatherForecast city={weatherData.city}/>
+      <small className="local-time">(Hours in user's local time)</small>
     </div>
   );
   } else {
