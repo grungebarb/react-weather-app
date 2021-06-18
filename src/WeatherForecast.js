@@ -31,6 +31,9 @@ export default function WeatherForecast(props) {
     let sunset = `${sunsetHour}:${sunsetMinute}h`;
     return (
       <div className="WeatherForecast">
+        <div className="row">
+          {forecast.list.slice(0,16).map(function (forecastItem) {return <WeatherForecastPreview data={forecastItem} />})}
+        </div>
         <div className="row sun-appearence">
           <div className="col sunrise">
             <img src="./icons/sunrise.png" alt="🌄" />
@@ -40,9 +43,6 @@ export default function WeatherForecast(props) {
             <img src="./icons/sunset.png" alt="🌇" />
             <strong>Sunset:</strong> {sunset}
           </div>
-        </div>
-        <div className="row">
-          {forecast.list.slice(0,16).map(function (forecastItem) {return <WeatherForecastPreview data={forecastItem} />})}
         </div>
       </div>
       );
